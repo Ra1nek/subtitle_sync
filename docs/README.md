@@ -15,7 +15,8 @@
 
 Проект организован следующим образом:
 
-`subtitle_sync/
+```bash
+subtitle_sync/
 ├── main.py
 ├── gui/
 │   ├── main_window.py
