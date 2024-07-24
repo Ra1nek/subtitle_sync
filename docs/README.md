@@ -49,7 +49,7 @@ subtitle_sync/
 Убедитесь, что у вас установлен Python 3.6 или выше. Установите зависимости с помощью следующей команды:
 
 ```bash
-pip install -r requirements.txt
+pip install -r requirements.txt`
 
 📄 requirements.txt
 
