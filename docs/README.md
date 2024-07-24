@@ -18,17 +18,17 @@
 subtitle_sync/
 ├── main.py
 ├── gui/
-│ ├── main_window.py
-│ └── init.py
+│   ├── main_window.py
+│   └── __init__.py
 ├── logic/
-│ ├── subtitle_sync.py
-│ └── init.py
+│   ├── subtitle_sync.py
+│   └── __init__.py
 └── resources/
-├── fonts/
-│ └── SegoeUI.ttf
-├── main_window.ui
-└── style.qss
-
+    ├── fonts/
+    │   └── SegoeUI.ttf
+    ├── main_window.ui
+    └── style.qss
+ 
 - **`main.py`**: Основной скрипт для запуска приложения.
 - **`gui/`**: Компоненты графического интерфейса пользователя.
   - **`main_window.py`**: Реализация главного окна приложения.
