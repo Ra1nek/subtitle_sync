@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>583</width>
+    <height>201</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Синхронизатор тайминга субтитров v0.1</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="spacing">
+     <number>10</number>
+    </property>
+    <property name="leftMargin">
+     <number>10</number>
+    </property>
+    <property name="topMargin">
+     <number>10</number>
+    </property>
+    <property name="rightMargin">
+     <number>10</number>
+    </property>
+    <property name="bottomMargin">
+     <number>10</number>
+    </property>
+    <item>
+     <layout class="QGridLayout" name="gridLayout">
+      <property name="leftMargin">
+       <number>10</number>
+      </property>
+      <property name="topMargin">
+       <number>10</number>
+      </property>
+      <property name="rightMargin">
+       <number>10</number>
+      </property>
+      <property name="bottomMargin">
+       <number>10</number>
+      </property>
+      <property name="spacing">
+       <number>5</number>
+      </property>
+      <item row="0" column="0">
+       <widget class="QLabel" name="labelOriginal">
+        <property name="text">
+         <string>Оригинальный файл (SRT):</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="originalFilePath"/>
+      </item>
+      <item row="0" column="2">
+       <widget class="QPushButton" name="selectOriginalButton">
+        <property name="text">
+         <string>Выбрать...</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="labelFinal">
+        <property name="text">
+         <string>Конечный файл (SRT):</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="finalFilePath"/>
+      </item>
+      <item row="1" column="2">
+       <widget class="QPushButton" name="selectFinalButton">
+        <property name="text">
+         <string>Выбрать...</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="labelSavePath">
+        <property name="text">
+         <string>Папка для сохранения:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="savePath"/>
+      </item>
+      <item row="2" column="2">
+       <widget class="QPushButton" name="selectSavePathButton">
+        <property name="text">
+         <string>Выбрать...</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0" colspan="3">
+       <layout class="QHBoxLayout" name="rangeLayout">
+        <item>
+         <widget class="QLabel" name="labelStartLine">
+          <property name="text">
+           <string>Начальная строка:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="startLineEdit"/>
+        </item>
+        <item>
+         <widget class="QLabel" name="labelEndLine">
+          <property name="text">
+           <string>Конечная строка:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="endLineEdit"/>
+        </item>
+       </layout>
+      </item>
+      <item row="4" column="0" colspan="3">
+       <widget class="QPushButton" name="processButton">
+        <property name="styleSheet">
+         <string notr="true">background-color: #0078d4; color: white; padding: 5px; border-radius: 5px;</string>
+        </property>
+        <property name="text">
+         <string>Обработать</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QLabel" name="authorLabel">
+      <property name="text">
+       <string>Автор: Shorin Nikolay 07.2024 г.</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignBottom|Qt::AlignRight|Qt::AlignTrailing</set>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

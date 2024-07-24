@@ -1,0 +1,45 @@
+/* Основной шрифт с запасным вариантом */
+* {
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 9pt;
+}
+
+QMainWindow {
+    background-color: #f3f3f3;
+}
+
+QLabel {
+    font-size: 9pt;
+    padding: 5px;
+    color: #333; /* Устанавливаем цвет текста */
+}
+
+QLineEdit {
+    font-size: 9pt;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff; /* Фоновый цвет для ввода */
+}
+
+QLineEdit:focus {
+    border-color: #0078d4; /* Цвет границы при фокусе */
+    outline: none; /* Убираем обводку при фокусе */
+}
+
+QPushButton {
+    font-size: 9pt;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0078d4;
+    color: white;
+}
+
+QPushButton:hover {
+    background-color: #005a9e;
+}
+
+QPushButton:pressed {
+    background-color: #003a75;
+}
