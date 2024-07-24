@@ -15,7 +15,7 @@
 
 Проект организован следующим образом:
 
-subtitle_sync/
+`subtitle_sync/
 ├── main.py
 ├── gui/
 │   ├── main_window.py
@@ -27,7 +27,7 @@ subtitle_sync/
     ├── fonts/
     │   └── SegoeUI.ttf
     ├── main_window.ui
-    └── style.qss
+    └── style.qss`
  
 - **`main.py`**: Основной скрипт для запуска приложения.
 - **`gui/`**: Компоненты графического интерфейса пользователя.
