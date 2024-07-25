@@ -9,11 +9,24 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 class SubtitleSync:
     def __init__(self):
+        """
+        Инициализация класса SubtitleSync.
+        """
         self.file_handler = FileHandler()
 
     def process_subtitles(self, original_path, final_path, save_path, start_line, end_line):
         """
         Обработка субтитров.
+
+        Args:
+            original_path (str): Путь к оригинальному файлу субтитров.
+            final_path (str): Путь к конечному файлу субтитров.
+            save_path (str): Путь для сохранения результата.
+            start_line (str): Начальная строка для обработки.
+            end_line (str): Конечная строка для обработки.
+
+        Returns:
+            tuple: Кортеж с лог-записями и путем к выходному файлу.
         """
         log_entries = []
         result_lines = []
@@ -116,6 +129,12 @@ class SubtitleSync:
     def read_and_parse_subtitles(self, file_path):
         """
         Чтение и парсинг субтитров из файла.
+
+        Args:
+            file_path (str): Путь к файлу субтитров.
+
+        Returns:
+            list: Список блоков субтитров.
         """
         lines = self.file_handler.read_file(file_path)
         return list(self.parse_subtitle_block(lines))
@@ -123,6 +142,12 @@ class SubtitleSync:
     def parse_subtitle_block(self, lines):
         """
         Парсинг блоков субтитров.
+
+        Args:
+            lines (list): Список строк субтитров.
+
+        Yields:
+            list: Блок субтитров.
         """
         block = []
         for line in lines:
@@ -137,12 +162,25 @@ class SubtitleSync:
     def create_subtitle_dict(self, blocks):
         """
         Создание словаря субтитров.
+
+        Args:
+            blocks (list): Список блоков субтитров.
+
+        Returns:
+            dict: Словарь субтитров.
         """
         return {int(block[0]): block[1:] for block in blocks if block[0].isdigit()}
 
     def format_subtitle_block(self, line_number, *blocks):
         """
         Форматирование блока субтитров.
+
+        Args:
+            line_number (int): Номер строки.
+            *blocks: Блоки субтитров.
+
+        Returns:
+            list: Отформатированный блок субтитров.
         """
         formatted_block = [f"{line_number}\n"]
         for block in blocks:
@@ -152,6 +190,12 @@ class SubtitleSync:
     def format_ranges(self, numbers):
         """
         Форматирование диапазонов номеров.
+
+        Args:
+            numbers (list): Список номеров.
+
+        Returns:
+            str: Отформатированные диапазоны номеров.
         """
         if not numbers:
             return ""
