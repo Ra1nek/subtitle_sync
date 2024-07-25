@@ -1,8 +1,12 @@
+import os
+import logging
 from PyQt5.QtWidgets import QMainWindow, QFileDialog, QMessageBox
 from PyQt5.QtGui import QFontDatabase, QFont
 from PyQt5.uic import loadUi
-import os
 from logic.subtitle_sync import SubtitleSync
+
+# Настройка логгирования
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -25,6 +29,9 @@ class MainWindow(QMainWindow):
         self.processButton.clicked.connect(self.process_subtitles)
 
     def load_font(self):
+        """
+        Загрузка шрифта из файла.
+        """
         font_db = QFontDatabase()
         font_path = 'resources/fonts/SegoeUI.ttf'
         font_id = font_db.addApplicationFont(font_path)
@@ -33,27 +40,39 @@ class MainWindow(QMainWindow):
             font = QFont(font_family, 9)  # Устанавливаем размер шрифта в 9 пунктов
             self.setFont(font)
         else:
-            print("Не удалось загрузить шрифт.")
+            logging.error("Не удалось загрузить шрифт.")
 
     def apply_stylesheet(self):
+        """
+        Применение стиля из файла.
+        """
         stylesheet_path = 'resources/style.qss'
         if os.path.exists(stylesheet_path):
             with open(stylesheet_path, 'r') as file:
                 self.setStyleSheet(file.read())
         else:
-            print("Не удалось найти файл стиля.")
+            logging.error("Не удалось найти файл стиля.")
 
     def select_original_file(self):
+        """
+        Выбор оригинального файла субтитров.
+        """
         file, _ = QFileDialog.getOpenFileName(self, "Выберите оригинальный файл субтитров", "", "SubRip Subtitle files (*.srt)")
         if file:
             self.originalFilePath.setText(self.normalize_path(file))
 
     def select_final_file(self):
+        """
+        Выбор конечного файла субтитров.
+        """
         file, _ = QFileDialog.getOpenFileName(self, "Выберите конечный файл субтитров", "", "SubRip Subtitle files (*.srt)")
         if file:
             self.finalFilePath.setText(self.normalize_path(file))
 
     def select_save_folder(self):
+        """
+        Выбор папки для сохранения результата.
+        """
         folder = QFileDialog.getExistingDirectory(self, "Выберите папку для сохранения результата")
         if folder:
             folder = self.normalize_path(folder)
@@ -62,24 +81,34 @@ class MainWindow(QMainWindow):
             self.savePath.setText(folder)
 
     def process_subtitles(self):
+        """
+        Обработка субтитров.
+        """
         original_path = self.originalFilePath.text()
         final_path = self.finalFilePath.text()
         save_path = self.savePath.text()
         start_line = self.startLineEdit.text()
         end_line = self.endLineEdit.text()
 
-        log_entries, output_file_path = self.subtitle_sync.process_subtitles(
-            original_path, final_path, save_path, start_line, end_line
-        )
+        try:
+            log_entries, output_file_path = self.subtitle_sync.process_subtitles(
+                original_path, final_path, save_path, start_line, end_line
+            )
 
-        if log_entries:
-            log_message = "Обработка завершена! "
-            if output_file_path:
-                log_message += f"Результат сохранен в {output_file_path}\n"
-            log_message += f"Лог записан в {self.normalize_path(save_path)}log.txt"
-            QMessageBox.information(self, "Информация", log_message)
+            if log_entries:
+                log_message = "Обработка завершена! "
+                if output_file_path:
+                    log_message += f"Результат сохранен в {output_file_path}\n"
+                log_message += f"Лог записан в {self.normalize_path(save_path)}log.txt"
+                QMessageBox.information(self, "Информация", log_message)
+        except Exception as e:
+            logging.error(f"Ошибка при обработке субтитров: {e}")
+            QMessageBox.critical(self, "Ошибка", f"Ошибка при обработке субтитров: {e}")
 
     def normalize_path(self, path):
+        """
+        Нормализация пути в зависимости от операционной системы.
+        """
         if os.name == 'nt':
             return path.replace('/', '\\')
         else:
