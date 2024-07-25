@@ -1,9 +1,12 @@
+# gui/main_window.py
+
 import os
 import logging
 from PyQt5.QtWidgets import QMainWindow, QFileDialog, QMessageBox
 from PyQt5.QtGui import QFontDatabase, QFont
 from PyQt5.uic import loadUi
 from logic.subtitle_sync import SubtitleSync
+from config import RESOURCES_PATH, FONTS_PATH, STYLES_PATH
 
 # Настройка логгирования
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -11,7 +14,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        loadUi('resources/main_window.ui', self)
+        loadUi(RESOURCES_PATH + 'main_window.ui', self)
 
         # Загрузка шрифта
         self.load_font()
@@ -33,7 +36,7 @@ class MainWindow(QMainWindow):
         Загрузка шрифта из файла.
         """
         font_db = QFontDatabase()
-        font_path = 'resources/fonts/SegoeUI.ttf'
+        font_path = FONTS_PATH + 'SegoeUI.ttf'
         font_id = font_db.addApplicationFont(font_path)
         if font_id != -1:
             font_family = font_db.applicationFontFamilies(font_id)[0]
@@ -46,9 +49,8 @@ class MainWindow(QMainWindow):
         """
         Применение стиля из файла.
         """
-        stylesheet_path = 'resources/style.qss'
-        if os.path.exists(stylesheet_path):
-            with open(stylesheet_path, 'r') as file:
+        if os.path.exists(STYLES_PATH):
+            with open(STYLES_PATH, 'r') as file:
                 self.setStyleSheet(file.read())
         else:
             logging.error("Не удалось найти файл стиля.")
