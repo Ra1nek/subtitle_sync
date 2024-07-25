@@ -74,6 +74,10 @@ class MainWindow(QMainWindow):
         start_line = self.startLineEdit.text()
         end_line = self.endLineEdit.text()
 
+        if not original_path or not final_path or not save_path:
+            QMessageBox.warning(self, "Предупреждение", "Пожалуйста, выберите все необходимые файлы и папки.")
+            return
+
         try:
             log_entries, output_file_path = self.subtitle_sync.process_subtitles(
                 original_path, final_path, save_path, start_line, end_line
