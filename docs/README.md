@@ -27,8 +27,6 @@ subtitle_sync/
 │   ├── file_handler.py
 │   └── __init__.py
 ├── resources/
-│   ├── fonts/
-│   │   └── SegoeUI.ttf
 │   ├── main_window.ui
 │   └── style.qss
 ├── tests/
@@ -47,7 +45,6 @@ subtitle_sync/
   - **`file_handler.py`**: Модуль для чтения и записи файлов.
   - **`__init__.py`**: Инициализирующий файл для пакета `logic`.
 - **`resources/`**: Ресурсы приложения.
-  - **`fonts/SegoeUI.ttf`**: Шрифт для использования в приложении.
   - **`main_window.ui`**: Файл интерфейса `Qt Designer`.
   - **`style.qss`**: Файл стилей для кастомизации внешнего вида приложения.
 - **`tests/`**: Тесты для основных функций.
