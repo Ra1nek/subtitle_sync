@@ -2,7 +2,6 @@
 
 # Константы для путей
 RESOURCES_PATH = 'resources/'
-FONTS_PATH = RESOURCES_PATH + 'fonts/'
 STYLES_PATH = RESOURCES_PATH + 'style.qss'
 
 # Константы для логгирования
