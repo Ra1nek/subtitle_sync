@@ -1,12 +1,15 @@
+# logic/subtitle_sync.py
+
 import os
 import logging
+from .file_handler import FileHandler
 
 # Настройка логгирования
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 class SubtitleSync:
     def __init__(self):
-        pass
+        self.file_handler = FileHandler()
 
     def process_subtitles(self, original_path, final_path, save_path, start_line, end_line):
         """
@@ -16,9 +19,9 @@ class SubtitleSync:
         result_lines = []
 
         # Нормализация путей
-        original_path = self.normalize_path(original_path)
-        final_path = self.normalize_path(final_path)
-        save_path = self.normalize_path(save_path)
+        original_path = self.file_handler.normalize_path(original_path)
+        final_path = self.file_handler.normalize_path(final_path)
+        save_path = self.file_handler.normalize_path(save_path)
 
         if not original_path or not final_path or not save_path:
             error_msg = "Пожалуйста, выберите все необходимые файлы и папки."
@@ -89,7 +92,7 @@ class SubtitleSync:
             output_file_path = os.path.join(save_path, output_file_name)
             log_file_path = os.path.join(save_path, "log.txt")
 
-            self.write_subtitles(output_file_path, result_lines)
+            self.file_handler.write_file(output_file_path, result_lines)
 
             with open(log_file_path, 'w', encoding='utf-8-sig') as log_file:
                 if skipped_due_to_timing_match:
@@ -114,8 +117,7 @@ class SubtitleSync:
         """
         Чтение и парсинг субтитров из файла.
         """
-        with open(file_path, 'r', encoding='utf-8-sig') as file:
-            lines = file.readlines()
+        lines = self.file_handler.read_file(file_path)
         return list(self.parse_subtitle_block(lines))
 
     def parse_subtitle_block(self, lines):
@@ -147,13 +149,6 @@ class SubtitleSync:
             formatted_block.extend(line + "\n" for line in block)
         return formatted_block
 
-    def write_subtitles(self, file_path, lines):
-        """
-        Запись субтитров в файл.
-        """
-        with open(file_path, 'w', encoding='utf-8-sig') as file:
-            file.writelines(lines)
-
     def format_ranges(self, numbers):
         """
         Форматирование диапазонов номеров.
@@ -178,12 +173,3 @@ class SubtitleSync:
             ranges.append(f"{start}-{prev}")
 
         return ', '.join(ranges)
-
-    def normalize_path(self, path):
-        """
-        Нормализация пути в зависимости от операционной системы.
-        """
-        if os.name == 'nt':
-            return path.replace('/', '\\')
-        else:
-            return path.replace('\\', '/')
