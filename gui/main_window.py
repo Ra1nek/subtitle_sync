@@ -3,10 +3,9 @@
 import os
 import logging
 from PyQt5.QtWidgets import QMainWindow, QFileDialog, QMessageBox
-from PyQt5.QtGui import QFontDatabase, QFont
 from PyQt5.uic import loadUi
 from logic.subtitle_sync import SubtitleSync
-from config import RESOURCES_PATH, FONTS_PATH, STYLES_PATH
+from config import RESOURCES_PATH, STYLES_PATH
 
 # Настройка логгирования
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -15,9 +14,6 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         loadUi(RESOURCES_PATH + 'main_window.ui', self)
-
-        # Загрузка шрифта
-        self.load_font()
 
         # Применение стиля
         self.apply_stylesheet()
@@ -30,20 +26,6 @@ class MainWindow(QMainWindow):
         self.selectFinalButton.clicked.connect(self.select_final_file)
         self.selectSavePathButton.clicked.connect(self.select_save_folder)
         self.processButton.clicked.connect(self.process_subtitles)
-
-    def load_font(self):
-        """
-        Загрузка шрифта из файла.
-        """
-        font_db = QFontDatabase()
-        font_path = FONTS_PATH + 'SegoeUI.ttf'
-        font_id = font_db.addApplicationFont(font_path)
-        if font_id != -1:
-            font_family = font_db.applicationFontFamilies(font_id)[0]
-            font = QFont(font_family, 9)  # Устанавливаем размер шрифта в 9 пунктов
-            self.setFont(font)
-        else:
-            logging.error("Не удалось загрузить шрифт.")
 
     def apply_stylesheet(self):
         """
