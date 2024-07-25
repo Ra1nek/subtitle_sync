@@ -18,17 +18,20 @@
 ```plaintext
 subtitle_sync/
 ├── main.py
+├── docs/
+│   └── README.md
 ├── gui/
 │   ├── main_window.py
 │   └── __init__.py
 ├── logic/
 │   ├── subtitle_sync.py
 │   └── __init__.py
-└── resources/
-    ├── fonts/
-    │   └── SegoeUI.ttf
-    ├── main_window.ui
-    └── style.qss
+├── resources/
+│   ├── fonts/
+│   │   └── SegoeUI.ttf
+│   ├── main_window.ui
+│   └── style.qss
+└── requirements.txt
 ```
 - **`main.py`**: Основной скрипт для запуска приложения.
 - **`gui/`**: Компоненты графического интерфейса пользователя.
