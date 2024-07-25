@@ -4,16 +4,19 @@
     font-size: 9pt;
 }
 
+/* Основной фон окна */
 QMainWindow {
     background-color: #f3f3f3;
 }
 
+/* Стиль для меток */
 QLabel {
     font-size: 9pt;
     padding: 5px;
     color: #333; /* Устанавливаем цвет текста */
 }
 
+/* Стиль для полей ввода */
 QLineEdit {
     font-size: 9pt;
     padding: 5px;
@@ -22,11 +25,13 @@ QLineEdit {
     background-color: #fff; /* Фоновый цвет для ввода */
 }
 
+/* Стиль для полей ввода при фокусе */
 QLineEdit:focus {
     border-color: #0078d4; /* Цвет границы при фокусе */
     outline: none; /* Убираем обводку при фокусе */
 }
 
+/* Стиль для кнопок */
 QPushButton {
     font-size: 9pt;
     padding: 5px 10px;
@@ -36,10 +41,127 @@ QPushButton {
     color: white;
 }
 
+/* Стиль для кнопок при наведении курсора */
 QPushButton:hover {
     background-color: #005a9e;
 }
 
+/* Стиль для кнопок при нажатии */
 QPushButton:pressed {
     background-color: #003a75;
+}
+
+/* Стиль для кнопок с иконками */
+QPushButton::icon {
+    margin-left: 5px;
+}
+
+/* Стиль для кнопок с текстом и иконками */
+QPushButton::text {
+    margin-right: 5px;
+}
+
+/* Стиль для прогресс-баров */
+QProgressBar {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    text-align: center;
+    color: #333;
+}
+
+QProgressBar::chunk {
+    background-color: #0078d4;
+    width: 20px;
+}
+
+/* Стиль для чекбоксов */
+QCheckBox {
+    spacing: 5px;
+}
+
+QCheckBox::indicator {
+    width: 13px;
+    height: 13px;
+}
+
+QCheckBox::indicator:unchecked {
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+
+QCheckBox::indicator:checked {
+    border: 1px solid #0078d4;
+    background-color: #0078d4;
+}
+
+/* Стиль для радиокнопок */
+QRadioButton {
+    spacing: 5px;
+}
+
+QRadioButton::indicator {
+    width: 13px;
+    height: 13px;
+}
+
+QRadioButton::indicator:unchecked {
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+
+QRadioButton::indicator:checked {
+    border: 1px solid #0078d4;
+    background-color: #0078d4;
+}
+
+/* Стиль для списков */
+QListView {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+QListView::item {
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+}
+
+QListView::item:selected {
+    background-color: #0078d4;
+    color: white;
+}
+
+/* Стиль для таблиц */
+QTableView {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+QTableView::item {
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+}
+
+QTableView::item:selected {
+    background-color: #0078d4;
+    color: white;
+}
+
+/* Стиль для деревьев */
+QTreeView {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+QTreeView::item {
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+}
+
+QTreeView::item:selected {
+    background-color: #0078d4;
+    color: white;
 }
