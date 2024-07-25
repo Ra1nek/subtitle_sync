@@ -17,7 +17,6 @@
 
 ```plaintext
 subtitle_sync/
-├── main.py
 ├── docs/
 │   └── README.md
 ├── gui/
@@ -25,12 +24,17 @@ subtitle_sync/
 │   └── __init__.py
 ├── logic/
 │   ├── subtitle_sync.py
+│   ├── file_handler.py
 │   └── __init__.py
 ├── resources/
 │   ├── fonts/
 │   │   └── SegoeUI.ttf
 │   ├── main_window.ui
 │   └── style.qss
+├── tests/
+│   └── test_subtitle_sync.py
+├── config.py
+├── main.py
 └── requirements.txt
 ```
 - **`main.py`**: Основной скрипт для запуска приложения.
