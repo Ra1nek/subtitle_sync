@@ -2,9 +2,10 @@ import sys
 import logging
 from PyQt5.QtWidgets import QApplication
 from gui.main_window import MainWindow
+from config import LOGGING_LEVEL, LOGGING_FORMAT
 
 # Настройка логгирования
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=LOGGING_LEVEL, format=LOGGING_FORMAT)
 
 def main():
     """
